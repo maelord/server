@@ -1,4 +1,5 @@
 const Image = require('../models/image')
+const getAPI = require('../helpers/API')
 
 class ImageController {
     static storeImage(req, res, next) {
