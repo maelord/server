@@ -6,7 +6,7 @@ const express = require('express'),
 
 /* GET main endpoint. */
 router.get('/', (req, res, next) => {
-  res.send({ message: 'Welcome Buddy!' })
+  res.send('Ini home')
 })
 router.post('/upload',
   images.multer.single('image'), 
