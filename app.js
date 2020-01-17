@@ -5,6 +5,7 @@ if (process.env.NODE_ENV === 'development') {
 
 }
 //Dependencies
+const ATLAS_CONNECT = process.env.ATLAS_CONNECT
 const express = require('express')
 const logger = require('morgan')
 const routes = require('./routes/index')
@@ -13,7 +14,7 @@ const app = express()
 
 //Mongoose Instance
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/maelord', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(ATLAS_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
