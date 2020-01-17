@@ -1,20 +1,20 @@
 const instance = require('./axios')
 let number = Math.floor(Math.random() * 731) + 1; 
-let hero = {}
 
 module.exports = function(req, res, next) {
+    let hero = {}
     instance.get(`/${number}/image`)
-            .then(result => {
-                hero.image = result.url 
+            .then(({data}) => {
+                hero.image = data.url 
                 return instance.get(`/${number}/biography`)
             })
-            .then( bio => {
-                hero.fullname = bio.full-name
-                hero.universe = bio.publisher
+            .then(({data}) => {
+                hero.fullname = data['full-name']
+                hero.universe = data.publisher
                 return instance.get(`/${number}/work`)
             })
-            .then( info => {
-                hero.occupation = info.occupation
+            .then( ({data}) => {
+                hero.occupation = data.occupation
                 res.status(200).json({hero})
             })
             .catch(err => {
