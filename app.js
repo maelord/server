@@ -12,6 +12,16 @@ const app = express()
 //load environment variables with dotenv
 require('dotenv').config()
 
+//Mongoose Instance
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/maelord', {useNewUrlParser: true});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
+
 app.use(require('cors')())
 app.use(logger('dev'))
 
