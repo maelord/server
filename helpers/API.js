@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
             })
             .then( ({data}) => {
                 hero.occupation = data.occupation
-                res.status(200).json({hero})
+                res.status(200).json({hero : hero, userImage: req.file.cloudStoragePublicUrl})
             })
             .catch(err => {
                 next(err)
