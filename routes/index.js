@@ -8,10 +8,7 @@ const getAPI = require('../helpers/API')
 router.get('/', (req, res, next) => {
   res.send('Ini home')
 })
-router.post('/upload', (req, res, next) => {
-  console.log('here')
-  next()
-},
+router.post('/upload', 
   images.multer.single('image'), 
   images.sendUploadToGCS, ImageController.storeImage, getAPI)
 

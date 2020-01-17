@@ -1,7 +1,7 @@
 const instance = require('./axios')
-let number = Math.floor(Math.random() * 731) + 1; 
 
 module.exports = function(req, res, next) {
+    let number = Math.floor(Math.random() * 500) + 1; 
     let hero = {}
     instance.get(`/${number}/image`)
             .then(({data}) => {
