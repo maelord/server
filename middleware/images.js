@@ -16,9 +16,12 @@ const getPublicUrl = (filename) => {
 }
 
 const sendUploadToGCS = (req, res, next) => {
+  console.log(req.file, 'dari midleware img')
   if (!req.file) {
+    console.log('dari req file tidak ada')
     return next()
   }
+
 
   const gcsname = Date.now() + req.file.originalname
   const file = bucket.file(gcsname)

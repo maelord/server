@@ -14,7 +14,7 @@ const app = express()
 
 //Mongoose Instance
 const mongoose = require('mongoose');
-mongoose.connect(ATLAS_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://vaniairnanda:vaniairnanda@cluster0-snvnr.gcp.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  console.log(err)
   res.status(err.status || 500)
   res.send({
     message: err.message,
