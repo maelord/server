@@ -22,6 +22,8 @@ db.once('open', function() {
   console.log('database connected!')
 });
 
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
 app.use(require('cors')())
 app.use(logger('dev'))
 
