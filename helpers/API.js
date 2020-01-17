@@ -5,6 +5,7 @@ module.exports = function(req, res, next) {
     let hero = {}
     instance.get(`/${number}/image`)
             .then(({data}) => {
+                console.log('masuk instance axios')
                 hero.image = data.url 
                 return instance.get(`/${number}/biography`)
             })
