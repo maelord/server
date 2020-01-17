@@ -1,5 +1,6 @@
 const Image = require('../models/image')
 
+
 class ImageController {
     static storeImage(req, res, next) {
         

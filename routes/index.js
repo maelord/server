@@ -2,14 +2,13 @@
 const express = require('express'),
       router = express.Router(),
       images = require('../middleware/images')
-const getAPI = require('../helpers/API')
 const ImageController = require('../controllers/imageController')
-
+const getAPI = require('../helpers/API')
 
 router.get('/', (req, res, next) => {
   res.send('Ini home')
 })
-router.post('/upload',
+router.post('/upload', 
   images.multer.single('image'), 
   images.sendUploadToGCS, ImageController.storeImage, getAPI)
 
